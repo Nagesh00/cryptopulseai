@@ -420,15 +420,31 @@ def get_fallback_chart_data(symbol):
 
 # --- SCHEDULER SETUP AND EXECUTION ---
 if __name__ == '__main__':
-    # Run tasks once on startup
-    fetch_latest_news()
-    generate_daily_article()
+    print("🚀 Starting CryptoPulse AI...")
+    print("🔧 Initializing components...")
+    
+    # Run tasks once on startup (with error handling)
+    try:
+        print("📰 Fetching initial news...")
+        fetch_latest_news()
+        print("✅ News fetch completed")
+    except Exception as e:
+        print(f"⚠️ News fetch failed: {e} (will retry automatically)")
+    
+    try:
+        print("🤖 Generating initial article...")
+        generate_daily_article()
+        print("✅ Article generation completed")
+    except Exception as e:
+        print(f"⚠️ Article generation failed: {e} (will retry automatically)")
 
     # Configure scheduler
+    print("⏰ Setting up automated tasks...")
     scheduler = BackgroundScheduler()
     scheduler.add_job(func=fetch_latest_news, trigger="interval", hours=1)
     scheduler.add_job(func=generate_daily_article, trigger="interval", hours=24)
     scheduler.start()
+    print("✅ Scheduler started")
 
     # Shut down the scheduler when exiting the app
     atexit.register(lambda: scheduler.shutdown())
@@ -437,4 +453,6 @@ if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
     debug_mode = os.environ.get('FLASK_DEBUG', 'True').lower() == 'true'
     
+    print(f"🌐 Starting server on http://localhost:{port}")
+    print("✨ CryptoPulse AI is ready!")
     app.run(host='0.0.0.0', port=port, debug=debug_mode)
