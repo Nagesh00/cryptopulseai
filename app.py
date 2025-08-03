@@ -1,10 +1,19 @@
 import requests
 import json
 import atexit
+import os
 from datetime import datetime
 from flask import Flask, render_template, jsonify
 from apscheduler.schedulers.background import BackgroundScheduler
-from config import NEWS_API_KEY, AI_API_KEY, PEXELS_API_KEY
+
+# Configuration - Use environment variables in production, fallback to config.py for local development
+try:
+    from config import NEWS_API_KEY, AI_API_KEY, PEXELS_API_KEY
+except ImportError:
+    # Use environment variables if config.py is not available (production)
+    NEWS_API_KEY = os.environ.get('NEWS_API_KEY', '')
+    AI_API_KEY = os.environ.get('AI_API_KEY', '')
+    PEXELS_API_KEY = os.environ.get('PEXELS_API_KEY', '')
 
 # --- FLASK APP INITIALIZATION ---
 app = Flask(__name__)
@@ -424,4 +433,8 @@ if __name__ == '__main__':
     # Shut down the scheduler when exiting the app
     atexit.register(lambda: scheduler.shutdown())
 
-    app.run(debug=True)
+    # Production-ready configuration
+    port = int(os.environ.get('PORT', 5000))
+    debug_mode = os.environ.get('FLASK_DEBUG', 'True').lower() == 'true'
+    
+    app.run(host='0.0.0.0', port=port, debug=debug_mode)
