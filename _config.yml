@@ -6,3 +6,7 @@ google_analytics: # Add your Google Analytics ID here if you have one
 plugins:
   - jekyll-sitemap
   - jekyll-seo-tag
+
+# Force GitHub Pages rebuild
+markdown: kramdown
+highlighter: rouge
