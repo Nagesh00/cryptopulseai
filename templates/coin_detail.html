@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<section id="coin-detail">
+    <h2 class="mb-4">{{ symbol }} - Price Chart</h2>
+    <div class="card bg-dark text-white">
+        <div class="card-body">
+            <div id="chart-container" style="height: 500px;"></div>
+        </div>
+    </div>
+</section>
+
+<script src="https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
+
+<script>
+    const coinSymbol = "{{ symbol }}";
+</script>
+<script src="{{ url_for('static', filename='js/chart.js') }}"></script>
+{% endblock %}

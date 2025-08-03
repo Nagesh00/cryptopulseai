@@ -1,0 +1,69 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<section id="featured-article" class="mb-5">
+    <h2 class="mb-4">Today's Analysis</h2>
+    <div class="card bg-dark text-white shadow-lg">
+        <div class="row g-0">
+            <div class="col-md-6">
+                <img src="{{ featured_article.image_url }}" class="img-fluid rounded-start h-100" style="object-fit: cover;" alt="Featured Article Image">
+            </div>
+            <div class="col-md-6 d-flex flex-column p-4">
+                <div class="card-body">
+                    <h5 class="card-title display-6">{{ featured_article.title }}</h5>
+                    <p class="card-text text-white-50 mt-3">{{ featured_article.summary }}</p>
+                    <a href="#" class="btn btn-primary mt-auto">Read More...</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<hr class="my-5">
+
+<section id="market-overview" class="mb-5">
+    <h2 class="mb-4">Live Cryptocurrency Prices</h2>
+    <div class="table-responsive">
+        <table class="table table-dark table-hover" id="crypto-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>24h %</th>
+                    <th>24h Volume</th>
+                    <th>Market Cap</th>
+                </tr>
+            </thead>
+            <tbody id="crypto-table-body">
+                <tr><td colspan="6" class="text-center">Loading market data...</td></tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<hr class="my-5">
+
+<section id="news">
+    <h2 class="mb-4">Latest Market News</h2>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        {% for article in news_articles %}
+        <div class="col">
+            <a href="{{ article.url }}" target="_blank" class="card-link">
+                <div class="card h-100 bg-dark-subtle text-white shadow-sm">
+                    <img src="{{ article.image_url }}" class="card-img-top" alt="News Image" style="height: 180px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ article.title|truncate(60) }}</h5>
+                        <p class="card-text text-white-50">{{ article.source }}</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        {% else %}
+        <p>No news articles found. The scheduler might be running.</p>
+        {% endfor %}
+    </div>
+</section>
+
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+{% endblock %}
