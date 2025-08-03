@@ -1,0 +1,8 @@
+theme: jekyll-theme-minimal
+title: CryptoPulse AI
+description: Real-time Cryptocurrency Dashboard with AI-Powered Insights
+show_downloads: true
+google_analytics: # Add your Google Analytics ID here if you have one
+plugins:
+  - jekyll-sitemap
+  - jekyll-seo-tag

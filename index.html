@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CryptoPulse AI - Real-time Cryptocurrency Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-bg: #0d1421;
+            --secondary-bg: #1a2332;
+            --accent-color: #f39c12;
+            --text-primary: #ffffff;
+            --text-secondary: #b0bec5;
+            --success-color: #27ae60;
+            --danger-color: #e74c3c;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--primary-bg) 0%, var(--secondary-bg) 100%);
+            color: var(--text-primary);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .feature-card {
+            background: var(--secondary-bg);
+            border: 1px solid #333;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 20px 0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(243, 156, 18, 0.3);
+        }
+
+        .tech-badge {
+            background: var(--accent-color);
+            color: var(--primary-bg);
+            padding: 8px 16px;
+            border-radius: 20px;
+            margin: 5px;
+            display: inline-block;
+            font-weight: bold;
+        }
+
+        .demo-screenshot {
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            margin: 30px 0;
+        }
+
+        .cta-section {
+            background: var(--secondary-bg);
+            padding: 80px 0;
+        }
+
+        .btn-primary-custom {
+            background: linear-gradient(45deg, var(--accent-color), #e67e22);
+            border: none;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-primary-custom:hover {
+            transform: scale(1.05);
+            background: linear-gradient(45deg, #e67e22, var(--accent-color));
+        }
+
+        .stats-section {
+            background: var(--primary-bg);
+            padding: 60px 0;
+        }
+
+        .stat-item {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+
+        .navbar-dark {
+            background: rgba(13, 20, 33, 0.95) !important;
+            backdrop-filter: blur(10px);
+        }
+
+        .live-demo-notice {
+            background: linear-gradient(45deg, #27ae60, #2ecc71);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">
+                <i class="fas fa-chart-line me-2"></i>CryptoPulse AI
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#features">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#demo">Demo</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#tech">Technology</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://github.com/Nagesh00/cryptopulseai" target="_blank">
+                            <i class="fab fa-github me-1"></i>GitHub
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <h1 class="display-4 fw-bold mb-4">CryptoPulse AI</h1>
+            <p class="lead mb-5">Real-time Cryptocurrency Dashboard with AI-Powered Insights</p>
+            <div class="live-demo-notice">
+                🚀 <strong>Live Application:</strong> This Flask app requires a server to run. Deploy on Heroku, Vercel, or Railway for full functionality!
+            </div>
+            <div class="mt-4">
+                <a href="https://github.com/Nagesh00/cryptopulseai" class="btn btn-primary-custom btn-lg me-3" target="_blank">
+                    <i class="fab fa-github me-2"></i>View Source Code
+                </a>
+                <a href="#demo" class="btn btn-outline-light btn-lg">
+                    <i class="fas fa-play me-2"></i>See Demo
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="stat-item">
+                        <div class="stat-number">100+</div>
+                        <p>Cryptocurrencies</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-item">
+                        <div class="stat-number">24/7</div>
+                        <p>Real-time Data</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-item">
+                        <div class="stat-number">AI</div>
+                        <p>Powered Insights</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-item">
+                        <div class="stat-number">100%</div>
+                        <p>Open Source</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">🌟 Key Features</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <i class="fas fa-chart-line fa-3x text-warning mb-3"></i>
+                        <h4>Real-time Market Data</h4>
+                        <p>Live cryptocurrency prices from CoinGecko and Binance APIs with automatic failover for 99.9% uptime.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <i class="fas fa-robot fa-3x text-warning mb-3"></i>
+                        <h4>AI-Generated Content</h4>
+                        <p>Daily market analysis powered by Google Gemini AI, identifying trending topics and market sentiment.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <i class="fas fa-newspaper fa-3x text-warning mb-3"></i>
+                        <h4>Automated News</h4>
+                        <p>Latest cryptocurrency and business news updated hourly from NewsAPI with professional curation.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <i class="fas fa-chart-candlestick fa-3x text-warning mb-3"></i>
+                        <h4>Interactive Charts</h4>
+                        <p>Professional TradingView Lightweight Charts with candlestick data and technical analysis tools.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <i class="fas fa-mobile-alt fa-3x text-warning mb-3"></i>
+                        <h4>Responsive Design</h4>
+                        <p>Bootstrap-powered dark theme interface optimized for desktop, tablet, and mobile devices.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <i class="fas fa-cogs fa-3x text-warning mb-3"></i>
+                        <h4>Background Automation</h4>
+                        <p>APScheduler handles automated tasks for news fetching and AI content generation without user intervention.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Section -->
+    <section id="demo" class="py-5 bg-dark">
+        <div class="container">
+            <h2 class="text-center mb-5">📱 Application Screenshots</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <h4><i class="fas fa-home me-2"></i>Homepage Dashboard</h4>
+                    <img src="https://via.placeholder.com/600x400/1a2332/ffffff?text=CryptoPulse+AI+Homepage%0A%0A✓+Real-time+Market+Data%0A✓+AI+Generated+Articles%0A✓+Latest+News%0A✓+Top+100+Cryptocurrencies" class="img-fluid demo-screenshot" alt="Homepage Demo">
+                    <p class="mt-3">The main dashboard displays real-time market data for the top 100 cryptocurrencies, AI-generated market analysis, and the latest news updates.</p>
+                </div>
+                <div class="col-md-6">
+                    <h4><i class="fas fa-chart-area me-2"></i>Interactive Charts</h4>
+                    <img src="https://via.placeholder.com/600x400/1a2332/ffffff?text=TradingView+Charts%0A%0A✓+Candlestick+Data%0A✓+Technical+Indicators%0A✓+100+Days+History%0A✓+Professional+Interface" class="img-fluid demo-screenshot" alt="Charts Demo">
+                    <p class="mt-3">Individual coin pages feature professional TradingView charts with historical data, candlestick patterns, and technical analysis tools.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Section -->
+    <section id="tech" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">🛠️ Technology Stack</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <h4>Backend Technologies</h4>
+                    <div class="mb-4">
+                        <span class="tech-badge">Python 3.13+</span>
+                        <span class="tech-badge">Flask</span>
+                        <span class="tech-badge">APScheduler</span>
+                        <span class="tech-badge">Requests</span>
+                        <span class="tech-badge">JSON Storage</span>
+                    </div>
+                    <h4>APIs & Services</h4>
+                    <div class="mb-4">
+                        <span class="tech-badge">CoinGecko API</span>
+                        <span class="tech-badge">Binance API</span>
+                        <span class="tech-badge">NewsAPI</span>
+                        <span class="tech-badge">Google Gemini AI</span>
+                        <span class="tech-badge">Pexels API</span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h4>Frontend Technologies</h4>
+                    <div class="mb-4">
+                        <span class="tech-badge">Bootstrap 5</span>
+                        <span class="tech-badge">JavaScript ES6</span>
+                        <span class="tech-badge">TradingView Charts</span>
+                        <span class="tech-badge">Font Awesome</span>
+                        <span class="tech-badge">Responsive Design</span>
+                    </div>
+                    <h4>Deployment Options</h4>
+                    <div class="mb-4">
+                        <span class="tech-badge">Heroku</span>
+                        <span class="tech-badge">Vercel</span>
+                        <span class="tech-badge">Railway</span>
+                        <span class="tech-badge">DigitalOcean</span>
+                        <span class="tech-badge">PythonAnywhere</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Setup Instructions -->
+    <section class="py-5 bg-dark">
+        <div class="container">
+            <h2 class="text-center mb-5">🚀 Quick Setup Guide</h2>
+            <div class="row">
+                <div class="col-md-8 mx-auto">
+                    <div class="feature-card">
+                        <h4><i class="fas fa-download me-2"></i>1. Clone Repository</h4>
+                        <pre class="bg-dark p-3 rounded"><code>git clone https://github.com/Nagesh00/cryptopulseai.git
+cd cryptopulseai</code></pre>
+                    </div>
+                    <div class="feature-card">
+                        <h4><i class="fas fa-cog me-2"></i>2. Setup Environment</h4>
+                        <pre class="bg-dark p-3 rounded"><code>python -m venv venv
+venv\Scripts\activate  # Windows
+pip install -r requirements.txt</code></pre>
+                    </div>
+                    <div class="feature-card">
+                        <h4><i class="fas fa-key me-2"></i>3. Configure API Keys</h4>
+                        <pre class="bg-dark p-3 rounded"><code>cp config_template.py config.py
+# Edit config.py with your API keys</code></pre>
+                    </div>
+                    <div class="feature-card">
+                        <h4><i class="fas fa-play me-2"></i>4. Run Application</h4>
+                        <pre class="bg-dark p-3 rounded"><code>python app.py
+# Visit http://localhost:5000</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section text-center">
+        <div class="container">
+            <h2 class="mb-4">Ready to Deploy Your Own CryptoPulse AI?</h2>
+            <p class="lead mb-5">Get started with the complete source code and deployment guides</p>
+            <div class="d-flex justify-content-center flex-wrap gap-3">
+                <a href="https://github.com/Nagesh00/cryptopulseai" class="btn btn-primary-custom btn-lg" target="_blank">
+                    <i class="fab fa-github me-2"></i>Clone Repository
+                </a>
+                <a href="https://github.com/Nagesh00/cryptopulseai/blob/master/DEPLOYMENT.md" class="btn btn-outline-light btn-lg" target="_blank">
+                    <i class="fas fa-rocket me-2"></i>Deployment Guide
+                </a>
+                <a href="https://github.com/Nagesh00/cryptopulseai/blob/master/README.md" class="btn btn-outline-light btn-lg" target="_blank">
+                    <i class="fas fa-book me-2"></i>Documentation
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-4 bg-dark border-top">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0">© 2025 CryptoPulse AI. Open Source Project.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="https://github.com/Nagesh00/cryptopulseai" class="text-warning me-3" target="_blank">
+                        <i class="fab fa-github fa-lg"></i>
+                    </a>
+                    <a href="https://github.com/Nagesh00/cryptopulseai/issues" class="text-warning me-3" target="_blank">
+                        <i class="fas fa-bug fa-lg"></i>
+                    </a>
+                    <a href="https://github.com/Nagesh00/cryptopulseai/blob/master/LICENSE" class="text-warning" target="_blank">
+                        <i class="fas fa-file-contract fa-lg"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.feature-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
